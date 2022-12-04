@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, EJS</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <a href="/">홈으로</a>
+    <h1>회원 목록</h1>
+    <h2>
+        총 회원 수 <%= userCounts %>
+    </h2>
+    <ul>
+        <% if (userCounts > 0) { %>
+            <% for(let i = 0; i < userCounts; i++ ) { %>
+        <li>
+            <p>ID: <%= USER[i].id%></p>
+            <p>이름: <%= USER[i].name%></p>
+            <p>이메일: <%= USER[i].email%></p>
+            <!-- 삭제하기 USER ID 알아야해 -->
+            <a href="#" onclick="deleteUser('<%= USER[i].id%>');">삭제하기</a>
+        </li>
+        <% } %>
+        <% } else { %>
+        <li>
+            회원 정보가 없습니다!
+        </li>
+    <% } %>
+    </ul>
+    <!-- localhost:4000/users/ejs -->
+    <!-- localhost:4000/public -->
+    <!-- <img src="/images/달.jpeg" alt="달" /> -->
+    <!-- 회원가입 -->
+    <form action="/users" method="POST">
+        <div>
+            <label>아이디</label>
+            <input type="text" name="id" />
+        </div>
+        <div>
+            <label>이름</label>
+            <input type="text" name="name" />
+        </div>
+        <div>
+            <label>이메일</label>
+            <input type="email" name="email" />
+        </div>
+        <button type="submit">회원 등록</button>
+    </form>
+        
+</body>
+<script>
+    // 연결해주기
+    // 프론트엔드는 / 이거 안됨 풀주소 써야함
+    function deleteUser(userID) {
+        fetch(`http://localhost:4000/users/${userID}`, {
+            method: 'delete',
+            headers: {
+                'Content-type':'application/json'
+            }
+        }).then((res) => {
+            console.log(res);
+            // redirection ㅍㅣ하기위함
+            location.reload();
+        }) .catch((err)=> {
+            console.log(err);
+        })
+    }
+    
+    // await 해야함 const res = await fetch blah
+    // async는 펑션 앞에 두고 .then이랑 .catch 삭제 하고 
+    // if(res.status === 200) {
+    // loaction.reload();
+    // ) else { console.log('동선 이상') 
+    // }
+</script>
+</html>

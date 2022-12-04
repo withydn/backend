@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿸끼</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // document(html페이지) /window(브라우저)
+    // console.log(document.cookie);
+    // document.cookie = "user=kdt; expires=26 Nov 2022 10:00:00 GMT; path=/";
+    // document.cookie = "test=test1; expires=27 Nov 2022 10:00:00 GMT; path=/";
+    // console.log(document.cookie);
+
+    // window.localStorage.setItem('name', '하아름');
+    // window.localStorage.setItem('dog', '이마루');
+    // const name = window.localStorage.getItem('name');
+    // console.log(name);
+
+//     const areum = {
+//         name:'하아름',
+//         age: 31,
+//         is31: true,    }
+
+//         const jsonObj = JSON.stringify(areum);
+// window.localStorage.setItem('areum', jsonObj);
+// const obj = JSON.parse(window.localStorage.getItem('areum'));
+// console.log(obj);
+
+// window.sessionStorage.setItem('areum','아름입니다!');
+
+window.localStorage.clear();
+window.localStorage.setItem('name', '하아름');
+window.localStorage.setItem('name1', '하아름1');
+window.localStorage.setItem('name2', '하아름2');
+window.localStorage.setItem('name3', '하아름3');
+window.localStorage.setItem('name4', '하아름4');
+// console.log(window.localStorage)
+
+for(let i = 0; 1 < window.localStorage.length; i++) {
+    const key = window.localStorage.key(i);
+    const value = window.localStorage.getItem(key);
+    console.log(`${i+1}번째 key는 ${key}이고, value는 ${value}입니다!`);
+}
+
+</script>
+
+</html>
