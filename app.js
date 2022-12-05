@@ -11,6 +11,10 @@ const session = require('express-session');
 
 require('dotenv').config();
 
+// const connect = require('./controllers/mongooseConnect');
+
+// connect();
+
 const app = express();
 const { PORT } = process.env;
 

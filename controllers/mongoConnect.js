@@ -2,8 +2,7 @@
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-const uri =
-'mongodb+srv://areum:ahdtlf!237@cluster0.uf6iqgu.mongodb.net/?retryWrites=true&w=majority';
+const uri = process.env.MDB_URI;
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
