@@ -48,6 +48,7 @@ app.use(
 );
 
 app.use(express.static('public'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // 위에는 필수코드 외우세영
