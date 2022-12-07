@@ -12,12 +12,11 @@ router.get('/', (req, res) => {
 // 로그인 처리
 router.post('/', (req, res) => {
   db.userCheck(req.body.id, (data) => {
-      if (data.length > 0) {
+    if (data.length > 0) {
       if (data[0].PASSWORD === req.body.password) {
-  req.session.login = true;
-  req.session.userId = req.body.id;
-
-// 쿠키 발행
+        req.session.login = true;
+        req.session.userId = req.body.id;
+        // 쿠키 발행
         res.cookie('user', req.body.id, {
           maxAge: 1000 * 20,
           httpOnly: true,
