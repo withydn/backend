@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 router.get('/cookie', (req, res) => {
   res.cookie('cookie', true, {
-    maxAge: 1000 * 60,
+    maxAge: 1000 * 600,
     httpOnly: false,
   });
   // res.clearCookie('cookie');
